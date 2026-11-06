@@ -1,0 +1,58 @@
+@host = http://localhost:5231
+
+### Create a customer (CPF or CNPJ, with or without punctuation)
+POST {{host}}/api/customers
+Content-Type: application/json
+
+{
+  "name": "Fazenda Boa Vista",
+  "document": "529.982.247-25",
+  "email": "compras@boavista.com.br",
+  "state": "PR"
+}
+
+### Create a product
+POST {{host}}/api/products
+Content-Type: application/json
+
+{
+  "sku": "SOY-40KG",
+  "name": "Soybean seed 40kg",
+  "unitPrice": 250.00,
+  "stockQuantity": 100
+}
+
+### Receive stock
+POST {{host}}/api/products/1/stock
+Content-Type: application/json
+
+{ "quantity": 20 }
+
+### Create a draft order
+POST {{host}}/api/orders
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "items": [
+    { "productId": 1, "quantity": 4 }
+  ]
+}
+
+### Confirm the order (reserves stock)
+POST {{host}}/api/orders/1/confirm
+
+### Issue the invoice (NF-e)
+POST {{host}}/api/orders/1/invoice
+
+### Get the order
+GET {{host}}/api/orders/1
+
+### List confirmed orders
+GET {{host}}/api/orders?status=Confirmed&page=1&pageSize=20
+
+### List invoices
+GET {{host}}/api/invoices
+
+### Cancel an order (returns stock if it was confirmed)
+POST {{host}}/api/orders/1/cancel
