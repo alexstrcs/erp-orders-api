@@ -1,6 +1,6 @@
 # ERP Orders API
 
-![CI](https://github.com/OWNER/erp-orders-api/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/alexstrcs/erp-orders-api/actions/workflows/ci.yml/badge.svg)
 
 A REST API for the core of an ERP sales flow — **customers, products, orders and Brazilian electronic invoices (NF-e)** — built with **C# / .NET 10, ASP.NET Core and Entity Framework Core**, running on **SQL Server** or SQLite.
 
@@ -40,7 +40,7 @@ It models the rules I worked with for years in agroindustrial ERPs: stock reserv
 Requirements: [.NET 10 SDK](https://dotnet.microsoft.com/download).
 
 ```bash
-git clone https://github.com/OWNER/erp-orders-api.git
+git clone https://github.com/alexstrcs/erp-orders-api.git
 cd erp-orders-api
 dotnet run --project src/ErpOrders.Api
 ```
